@@ -1,0 +1,12 @@
+{
+  "ok": true,
+  "models": [
+    {
+      "id": "test-model",
+      "context_length": 4096
+    }
+  ],
+  "error": null,
+  "api_base": "http://127.0.0.1:5098/v1",
+  "fetched_at": 1794921717
+}

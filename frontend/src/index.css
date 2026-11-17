@@ -1,0 +1,245 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --canvas: #f5f6fa;
+  --surface: #ffffff;
+  --surface-muted: #f9fafb;
+  --border: #e6e8f0;
+  --border-strong: #d6dae6;
+  --ink: #101828;
+  --ink-muted: #667085;
+  --brand: #4f46e5;
+  --brand-soft: #eef2ff;
+  --brand-ink: #3730a3;
+  --user-bubble: #eef2ff;
+  --shadow: 0 1px 2px rgba(16, 24, 40, 0.04), 0 8px 24px rgba(16, 24, 40, 0.06);
+}
+
+.dark {
+  --canvas: #080b13;
+  --surface: #0f1420;
+  --surface-muted: #131a28;
+  --border: #1f283a;
+  --border-strong: #2b3750;
+  --ink: #e8ecf4;
+  --ink-muted: #94a3b8;
+  --brand: #818cf8;
+  --brand-soft: #1a2035;
+  --brand-ink: #c7d2fe;
+  --user-bubble: #1a2035;
+  --shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 12px 32px rgba(0, 0, 0, 0.35);
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+@supports (height: 100dvh) {
+  html,
+  body,
+  #root {
+    height: 100dvh;
+  }
+}
+
+/* Mobile safe areas (notches / home indicator). */
+body {
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
+}
+
+body {
+  background: var(--canvas);
+  color: var(--ink);
+  font-family: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+* {
+  border-color: var(--border);
+}
+
+::selection {
+  background: color-mix(in srgb, var(--brand) 28%, transparent);
+}
+
+/* Scrollbars */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-strong) transparent;
+}
+*::-webkit-scrollbar {
+  width: 9px;
+  height: 9px;
+}
+*::-webkit-scrollbar-thumb {
+  background: var(--border-strong);
+  border-radius: 999px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+
+@layer components {
+  .surface {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+  }
+
+  .muted {
+    color: var(--ink-muted);
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl text-sm font-medium transition;
+    @apply disabled:pointer-events-none disabled:opacity-50;
+  }
+
+  .btn-primary {
+    background: var(--brand);
+    color: white;
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-medium shadow-sm transition hover:brightness-110 active:brightness-95 disabled:pointer-events-none disabled:opacity-50;
+  }
+
+  .btn-ghost {
+    color: var(--ink-muted);
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-3 py-2 text-sm font-medium transition hover:bg-[var(--surface-muted)] hover:text-[var(--ink)] disabled:pointer-events-none disabled:opacity-50;
+  }
+
+  .btn-outline {
+    border: 1px solid var(--border-strong);
+    color: var(--ink);
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-3.5 py-2 text-sm font-medium transition hover:bg-[var(--surface-muted)] disabled:pointer-events-none disabled:opacity-50;
+  }
+
+  .field {
+    width: 100%;
+    background: var(--surface);
+    border: 1px solid var(--border-strong);
+    color: var(--ink);
+    @apply rounded-xl px-3.5 py-2.5 text-sm outline-none transition;
+  }
+  .field:focus {
+    border-color: var(--brand);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--brand) 18%, transparent);
+  }
+
+  .pill {
+    background: var(--surface-muted);
+    border: 1px solid var(--border);
+    color: var(--ink-muted);
+    @apply inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-medium;
+  }
+
+  .safe-bottom {
+    padding-bottom: max(0.75rem, env(safe-area-inset-bottom));
+  }
+}
+
+/* Chat markdown */
+.prose-chat {
+  --tw-prose-body: var(--ink);
+  --tw-prose-headings: var(--ink);
+  --tw-prose-links: var(--brand);
+  --tw-prose-bold: var(--ink);
+  --tw-prose-counters: var(--ink-muted);
+  --tw-prose-bullets: var(--ink-muted);
+  --tw-prose-hr: var(--border);
+  --tw-prose-quotes: var(--ink);
+  --tw-prose-quote-borders: var(--border-strong);
+  --tw-prose-code: var(--ink);
+  --tw-prose-pre-code: #e6edf3;
+  --tw-prose-pre-bg: #0d1117;
+  --tw-prose-th-borders: var(--border-strong);
+  --tw-prose-td-borders: var(--border);
+  color: var(--ink);
+  font-size: 0.9375rem;
+  line-height: 1.7;
+}
+.prose-chat :where(p, ul, ol, blockquote, table):first-child {
+  margin-top: 0;
+}
+.prose-chat :where(p, ul, ol, blockquote, table, pre):last-child {
+  margin-bottom: 0;
+}
+.prose-chat :where(h1, h2, h3, h4) {
+  font-weight: 650;
+  letter-spacing: -0.01em;
+}
+.prose-chat :where(table) {
+  display: block;
+  overflow-x: auto;
+  font-size: 0.875rem;
+}
+.prose-chat :where(code):not(pre code) {
+  background: var(--surface-muted);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.1em 0.35em;
+  font-size: 0.85em;
+}
+.prose-chat :where(pre code) {
+  background: transparent;
+  border: 0;
+  padding: 0;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate-fade-up {
+  animation: fadeUp 0.25s ease-out both;
+}
+
+@keyframes dotPulse {
+  0%,
+  80%,
+  100% {
+    opacity: 0.25;
+    transform: translateY(0);
+  }
+  40% {
+    opacity: 1;
+    transform: translateY(-2px);
+  }
+}
+.dot {
+  animation: dotPulse 1.2s infinite ease-in-out;
+}
+.dot:nth-child(2) {
+  animation-delay: 0.15s;
+}
+.dot:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+.stream-caret::after {
+  content: "▍";
+  margin-left: 1px;
+  color: var(--brand);
+  animation: blink 1s steps(2, start) infinite;
+}
+@keyframes blink {
+  to {
+    visibility: hidden;
+  }
+}

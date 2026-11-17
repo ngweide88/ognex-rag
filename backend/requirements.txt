@@ -1,0 +1,20 @@
+# Core API
+Flask>=3.0,<4
+python-dotenv>=1.0,<2
+requests>=2.31,<3
+
+# LLM + orchestration (OpenAI-compatible HTTP)
+openai>=1.60,<3
+langgraph>=1.0,<2
+langchain-core>=1.0,<2
+langchain-text-splitters>=1.0,<2
+
+# Retrieval
+chromadb>=1.0,<2
+numpy>=1.26
+scikit-learn>=1.4
+
+# Ingestion
+PyMuPDF>=1.24,<3
+beautifulsoup4>=4.12,<5
+typing_extensions>=4.9
