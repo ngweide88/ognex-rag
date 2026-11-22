@@ -2,11 +2,62 @@
   "ok": true,
   "models": [
     {
-      "id": "test-model",
-      "context_length": 4096
+      "context_length": 1048576,
+      "id": "deepseek-v4.1-flash:763b-a8b-a16b-mxfp4-sglang-gb10",
+      "object": "model"
+    },
+    {
+      "context_length": 1048576,
+      "id": "deepseek-v4.1-flash:763b-a8b-a16b-mxfp4-tensorfold-gb10",
+      "object": "model"
+    },
+    {
+      "context_length": 262144,
+      "id": "mixture-of-intelligence",
+      "object": "model"
+    },
+    {
+      "context_length": 1048576,
+      "id": "qwen3.8-flash-next-180b-a6b-nvfp4-tensorfold-gb10",
+      "object": "model"
+    },
+    {
+      "context_length": 262144,
+      "id": "qwen3.8-flash-next-180b-a6b-nvfp4-vllm-altos",
+      "object": "model"
+    },
+    {
+      "context_length": 262144,
+      "id": "qwen3.8-flash-next-180b-a6b-nvfp4-vllm-atom",
+      "object": "model"
+    },
+    {
+      "context_length": 262144,
+      "id": "qwen3.8-flash-next-180b-a6b-nvfp4-vllm-byte",
+      "object": "model"
+    },
+    {
+      "context_length": 262144,
+      "id": "qwen3.8-flash-next-180b-a6b-nvfp4-vllm-gb10",
+      "object": "model"
+    },
+    {
+      "context_length": 262144,
+      "id": "qwen3.8-flash-next-180b-a6b-nvfp4-vllm-giga",
+      "object": "model"
+    },
+    {
+      "context_length": 262144,
+      "id": "qwen3.8:27b-nvfp4-sglang",
+      "object": "model"
+    },
+    {
+      "context_length": 262144,
+      "id": "qwen3.8:27b-nvfp4-sglang-4090d",
+      "object": "model"
     }
   ],
   "error": null,
-  "api_base": "http://127.0.0.1:5098/v1",
-  "fetched_at": 1794921717
+  "api_base": "http://127.0.0.1:5000/v1",
+  "fetched_at": 1794965019
 }
